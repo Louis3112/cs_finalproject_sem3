@@ -3,6 +3,9 @@ import numpy as np
 rows = np.random.randint(1,9)
 colls = np.random.randint(1,9)
 
+def fuck():
+    print("fck u!!")
+
 def main():
     print("================== Group 7 ===================")
     print("| 1. Rayhan Hendra Atmadja     075 - TI 23 C |")
