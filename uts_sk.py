@@ -246,10 +246,10 @@ def func2_2():
         print("3. k * (A + B) = kA + kB\tDistributive Multiplication With Scalar")
         print("4. (k+l) A = kA + lA\t\tDistributive Multiplication With Scalar")
         print("5. (kl) A = k(lA)\t\tAssociative Multiplication With Scalar")
-        print("6. k(A*B) = kA(B) = A(kB)\tDistributive Multiplication With Scalar")
+        print("6. k(A * B) = kA(B) = A(kB)\tDistributive Multiplication With Scalar")
         print("7. A(BC) = (AB)C\t\tAssociative Multiplication")
-        print("8. A(B+C) = AB + AC\t\tDistributive Addition")
-        print("9. (A+B)C = AC + BC\t\tDistributive Addition")
+        print("8. A(B + C) = AB + AC\t\tDistributive Addition")
+        print("9. (A + B)C = AC + BC\t\tDistributive Addition")
         print("10. A * B != B * A\t\tNot Commutative Multiplication")
         print("11. If A * B = A * C, does not mean B = C ")
         print("12. If A * B = 0, it's either A = 0 and B = 0")
@@ -358,7 +358,7 @@ def func2_2():
             enter()
 
         elif choice == 8:
-            print("\n8. A(B+C) = AB + AC\t\tDistributive Addition")
+            print("\n8. A(B + C) = AB + AC\t\tDistributive Addition")
             print("\nA(B+C)")
             print("\n",A), print("\n*"), print("\n("), print("\n",B), print("\n+ "), print("\n",C), print("\n)")
             print("\n= "), print("\n",np.dot(A, B + C))
@@ -370,7 +370,7 @@ def func2_2():
             enter()
 
         elif choice == 9:
-            print("\n9. (A+B)C = AC + BC\t\tDistributive Addition")
+            print("\n9. (A + B)C = AC + BC\t\tDistributive Addition")
             print("\n(A+B)C")
             print("\n("), print("\n",A), print("\n+"), print("\n",B), print("\n)"), print("\n* "), print("\n",C), 
             print("\n= "), print("\n",np.dot(A + B, C))
