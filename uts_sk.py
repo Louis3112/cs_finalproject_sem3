@@ -149,6 +149,8 @@ def func2_1():
         print("4. Diagonal Matrix")
         print("5. Identity Matrix")
         print("6. Scalar Matrix")
+        print("7. Row Matrix")
+        print("8. Column Matrix")
         print("7. Exit")
         print("Choose one to see the example")
 
@@ -192,7 +194,7 @@ def func2_1():
             enter()
         
         elif choice == 5:
-            print("\nDiagonal Matrix is a square matrix with the elements")
+            print("\nIdentity Matrix is a square matrix with the elements")
             print("on the MAIN DIAGONAL having a value of '1' while the others are ZERO")
 
             identityMatrix = np.eye(4)
@@ -203,15 +205,29 @@ def func2_1():
             print("\nScalar Matrix is a square matrix with the elements")
             print("on the MAIN DIAGONAL having the same values while the others are ZERO")
 
-            identityMatrix = np.eye(4) * np.random.randint(1,9)
-            print("\n", identityMatrix)
+            scalarMatrix = np.eye(4) * np.random.randint(1,9)
+            print("\n", scalarMatrix)
             enter()
         
         elif choice == 7:
+            print("\nRow Matrix is a matrix that only consist of one row")
+
+            rowMatrix = np.array([np.random.randint(1,9), np.random.randint(1,9), np.random.randint(1,9)])
+            print("\n", rowMatrix)
+            enter()
+        
+        elif choice == 8:
+            print("\nColumn Matrix is a matrix that only consist of one column")
+
+            columnMatrix = np.array([[np.random.randint(1,9)], [np.random.randint(1,9)], [np.random.randint(1,9)]])
+            print("\n", columnMatrix)
+            enter()
+
+        elif choice == 9:
             break
 
         else:  
-            print("\nInvalid choice! Please choose from 1-6.")
+            print("\nInvalid choice! Please choose from 1-9.")
             enter()
             continue
 
@@ -261,7 +277,7 @@ def func2_2():
             print("\nTherefore, A + B = B + A is TRUE")
             enter()
 
-        if choice == 2:
+        elif choice == 2:
             print("\n2. A + (B + C) = (A + B) + C\tAssociative Addition")
             print("\nA + (B + C)")
             print("\n",A), print("\n+ ( "), print("\n",B), print("\n+ "), print("\n",C), print("\n)")
@@ -274,7 +290,7 @@ def func2_2():
             print("\nTherefore, A + (B + C) = (A + B) + C is TRUE")
             enter()
 
-        if choice == 3:
+        elif choice == 3:
             print("\n3. k * (A + B) = kA + kB\tDistributive Multiplication With Scalar")
             print("\nk * (A + B)")
             print("\n",k," *"), print("\n( "), print("\n",A), print("\n+ "), print("\n",B), print("\n )")
@@ -287,7 +303,7 @@ def func2_2():
             print("\nTherefore, k * (A + B) = kA + kB is TRUE")
             enter()
 
-        if choice == 4:
+        elif choice == 4:
             print("\n4. (k+l) A = kA + lA\t\tDistributive Multiplication With Scalar")
             print("\n(k+l) A")
             print("\n(",k," + ",l,")"), print("\n* "), print("\n",A)
@@ -300,7 +316,7 @@ def func2_2():
             print("\nTherefore, (k+l) A = kA + lA is TRUE")
             enter()
 
-        if choice == 5:
+        elif choice == 5:
             print("\n5. (kl) A = k(lA)\t\t\tAssociative Multiplication With Scalar")
             print("\n(kl) A")
             print("\n(",k," * ",l,")"), print("\n",A)
@@ -313,7 +329,7 @@ def func2_2():
             print("\nTherefore, (kl) A = k(lA) is TRUE")
             enter()
         
-        if choice == 6:
+        elif choice == 6:
             print("\n6. k(A * B) = (kA) * B = A * (kB)\tDistributive Multiplication With Scalar")
             print("\nk(A * B)")
             print("\n",k," * "), print("\n("), print("\n",A), print("\n* "), print("\n",B)
@@ -329,7 +345,7 @@ def func2_2():
             print("\nTherefore, k(A * B) = (kA) * B = A * (kB) is TRUE")
             enter()
 
-        if choice == 7:
+        elif choice == 7:
             print("\n7. A(BC) = (AB)C\t\tAssociative Multiplication")
             print("\nA(BC)")
             print("\n",A), print("\n*"), print("\n("), print("\n",B), print("\n* "), print("\n",C), print("\n)")
@@ -341,7 +357,7 @@ def func2_2():
             print("\nTherefore, A(BC) = (AB)C is TRUE")
             enter()
 
-        if choice == 8:
+        elif choice == 8:
             print("\n8. A(B+C) = AB + AC\t\tDistributive Addition")
             print("\nA(B+C)")
             print("\n",A), print("\n*"), print("\n("), print("\n",B), print("\n+ "), print("\n",C), print("\n)")
@@ -353,7 +369,7 @@ def func2_2():
             print("\nTherefore, A(B+C) = AB + AC is TRUE")
             enter()
 
-        if choice == 9:
+        elif choice == 9:
             print("\n9. (A+B)C = AC + BC\t\tDistributive Addition")
             print("\n(A+B)C")
             print("\n("), print("\n",A), print("\n+"), print("\n",B), print("\n)"), print("\n* "), print("\n",C), 
@@ -365,7 +381,7 @@ def func2_2():
             print("\nTherefore, (A+B)C = AC + BC is TRUE")
             enter()
 
-        if choice == 10:
+        elif choice == 10:
             print("\n10. A * B != B * A\t\tNot Commutative Multiplication")
             print("\nA * B")
             print("\n",A), print("\n*"), print("\n",B)
@@ -378,7 +394,7 @@ def func2_2():
             print("Therefore, A * B != B * A is TRUE")
             enter()
 
-        if choice == 11:
+        elif choice == 11:
             print("11. If A * B = A * C, does not mean B = C ")
             AKhusus = np.array([[0, 100], [0, 0]])
             BKhusus = np.array([[-6, 28], [0, 0]])
@@ -396,7 +412,7 @@ def func2_2():
             print("Therefore, if A * B = A * C, does not mean B = C is TRUE")
             enter()
 
-        if choice == 12:
+        elif choice == 12:
             print("12. If A * B = 0, it's either A = 0 and B = 0")
             print("                  or A != 0 and B != 0")
             AKhusus = np.array([[1, 2], [2, 4]])
@@ -413,6 +429,14 @@ def func2_2():
             print("\nTherefore, if A * B = 0, it's either A = 0 and B = 0")
             print("                  or A != 0 and B != 0")
             enter()
+        
+        elif choice == 13:
+            break
+
+        else:  
+            print("\nInvalid choice! Please choose from 1-13.")
+            enter()
+            continue
 def func3() : 
     print("WIP") # Work in progress
 
