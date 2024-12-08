@@ -120,7 +120,7 @@ def func2() :
     while True:
         print("\nMatrix Properties")
         print("1. Types of matrices")
-        print("2. Properties of matrix")
+        print("2. Behavior of matrix")
         print("3. Exit")
         try:
             choice = int(input("> "))
@@ -239,7 +239,7 @@ def func2_2():
     l = np.random.randint(1,5)
 
     while True:
-        print("\nMatrix has a lot of properties")
+        print("\nMatrix has a lot of behavior")
         print("Suppose A,B,C are matrix and k and l are scalar")
         print("1. A + B = B + A\t\tCommutative Addition")
         print("2. A + (B + C) = (A + B) + C\tAssociative Addition")
