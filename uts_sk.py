@@ -1,71 +1,14 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 rows = np.random.randint(1,9)
 colls = np.random.randint(1,9)
 
-def main():
-    print("================== Group 7 ===================")
-    print("| 1. Rayhan Hendra Atmadja     075 - TI 23 C |")
-    print("| 2. Adriano Emmanuel          082 - TI 23 C |")
-    print("| 3. Cornelius Louis Nathan    085 - TI 23 C |")
-    print("==============================================")
-
-    while True:
-        print("\n========= Science Comp Implementation ========")
-        print("1. Systems of Linear Equations") # Sistem Persamaan Linear 
-            # nanti terbagi menjadi 2, cara triangularisasi dan eliminasi gauss
-        print("2. Matrix Practices")
-            # ini bisa cuma ngeprint sifat" matrix, atau menampilkan penerapan matrix nya
-        print("3. Invertible Matrik") # Invers Matrix
-        print("4. LU Decomposition")
-        print("5. Linear Equations")  # Persamaan linear
-            # sebenarnya aku bingung mau implemen ini, karena pptnya gk dikasih ama ibunya   
-        print("6. Non Linear Equations")
-            # ada 2 metode, metode biseksi (metode tertutup) dan newton rhapson (metode terbuka) (pilih salah satu aja gak seh?)
-        print("7. Interpolation") # Interpolasi
-            # ada 3, interpolasi linear, interpolasi kuadrat/non linear, polinom newton (pilih salah satu aja gak seh?)
-        print("8. Basic Simulation")
-            # sejauh ini, kalau simulasi..  paling mentok bisa nerapin Linear Congruential Generators (LCG) (PPT Slide 18)
-            # LCG itu teori kalau misalkan hasil perhitungannya melebihi mod itu, maka hasil perhitungannya akan kembali seperti semula
-        print("9. Iterasi Theory") # Teori iterasi 
-            # iterasi jacobi dan gauss-seidler
-        print("10. Monte-Carlo Simulation") 
-        print("11. Markov Chain")
-        print("12. Exit\n")
-
-        print("Choose from 1-11")
-        try:
-            choice = int(input("> "))   
-        except ValueError:
-            print("\nInvalid input, choose from 1-12!")
-            enter()
-            continue
-
-        if choice == 1:
-            func1()
-        elif choice == 2:
-            func2()
-        elif choice == 3:
-            func3()    
-        elif choice == 4:
-            func4()
-        elif choice == 5:
-            func5()
-        elif choice == 6:
-            func6()
-        elif choice == 7:
-            func7()
-        elif choice == 8:
-            func8()         
-        elif choice == 9:
-            func9()
-        elif choice == 10:
-            func10()   
-        elif choice == 11:
-            func11()
-        elif choice == 12:
-            print("Thank you")
-            break
+def clear():
+  if os.name == 'nt':
+    os.system('cls')
+  else:
+    os.system('clear')
 
 def func1() : 
     rowsfunc1, colsfunc1 = map(int, input("Enter size of matrix (rows cols): ").split())
@@ -446,8 +389,34 @@ def func4() :
 def func5() : 
     print("WIP") # Work in progress    
 
-def func6() : 
-    print("WIP") # Work in progress
+class nonlinear():
+    def main_non_linear(self):
+        while True:
+            print("Non Linear Equation Calculator")
+            print("1. Quadratic Equation ( ax^2 + bx + c = 0 )")
+            print("2. Exponential Equations ( e^x = 3x )")
+            print("3. Trigonometric Equations ( e^x = 0 )")
+            print("0. Exit")
+            choice = input("> ")
+            if choice == '1':
+                self.quadratic()
+            elif choice == '2':
+                self.exponential()
+            elif choice == '3':
+                self.trigonometric()
+            elif choice == '0':
+                return
+            else:
+                input("Invalid choice! Please choose from 1-3.")
+                enter()
+
+    def quadratic(self):
+
+    def exponential(self):
+
+    def trigonometric(self):
+
+nonlin   = nonlinear()
 
 def func7() : 
     print("WIP") # Work in progress
@@ -465,6 +434,71 @@ def func11() :
     print("WIP") # Work in progress
         
 def enter(): # biar gak perlu klik input() terus
-    input("Press Enter to continue")    
+    input("Press Enter to continue")
+
+def main():
+    print("================== Group 7 ===================")
+    print("| 1. Rayhan Hendra Atmadja     075 - TI 23 C |")
+    print("| 2. Adriano Emmanuel          082 - TI 23 C |")
+    print("| 3. Cornelius Louis Nathan    085 - TI 23 C |")
+    print("==============================================")
+
+    while True:
+        print("\n========= Science Comp Implementation ========")
+        print("1. Systems of Linear Equations") # Sistem Persamaan Linear
+            # nanti terbagi menjadi 2, cara triangularisasi dan eliminasi gauss
+        print("2. Matrix Practices")
+            # ini bisa cuma ngeprint sifat" matrix, atau menampilkan penerapan matrix nya
+        print("3. Invertible Matrik") # Invers Matrix
+        print("4. LU Decomposition")
+        print("5. Linear Equations")  # Persamaan linear
+            # sebenarnya aku bingung mau implemen ini, karena pptnya gk dikasih ama ibunya
+        print("6. Non Linear Equations")
+            # ada 2 metode, metode biseksi (metode tertutup) dan newton rhapson (metode terbuka) (pilih salah satu aja gak seh?)
+        print("7. Interpolation") # Interpolasi
+            # ada 3, interpolasi linear, interpolasi kuadrat/non linear, polinom newton (pilih salah satu aja gak seh?)
+        print("8. Basic Simulation")
+            # sejauh ini, kalau simulasi..  paling mentok bisa nerapin Linear Congruential Generators (LCG) (PPT Slide 18)
+            # LCG itu teori kalau misalkan hasil perhitungannya melebihi mod itu, maka hasil perhitungannya akan kembali seperti semula
+        print("9. Iterasi Theory") # Teori iterasi
+            # iterasi jacobi dan gauss-seidler
+        print("10. Monte-Carlo Simulation")
+        print("11. Markov Chain")
+        print("12. Exit\n")
+
+        print("Choose from 1-11")
+        try:
+            choice = int(input("> "))
+        except ValueError:
+            print("\nInvalid input, choose from 1-12!")
+            enter()
+            continue
+
+        if choice == 1:
+            func1()
+        elif choice == 2:
+            func2()
+        elif choice == 3:
+            func3()
+        elif choice == 4:
+            func4()
+        elif choice == 5:
+            func5()
+        elif choice == 6:
+            nonlin.main_non_linear()
+        elif choice == 7:
+            func7()
+        elif choice == 8:
+            func8()
+        elif choice == 9:
+            func9()
+        elif choice == 10:
+            func10()
+        elif choice == 11:
+            func11()
+        elif choice == 12:
+            print("Thank you")
+            break
+
 
 if __name__ == "__main__" : main() 
