@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 rows = np.random.randint(1,9)
 colls = np.random.randint(1,9)
-
+#tes
 def clear():
   if os.name == 'nt':
     os.system('cls')
