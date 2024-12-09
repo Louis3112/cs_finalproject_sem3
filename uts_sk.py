@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -61,6 +62,7 @@ def func1() :
 
 def func2() :
     while True:
+        print()
         print("\nMatrix Properties")
         print("1. Types of matrices")
         print("2. Behavior of matrix")
@@ -380,6 +382,7 @@ def func2_2():
             print("\nInvalid choice! Please choose from 1-13.")
             enter()
             continue
+
 def func3() : 
     print("WIP") # Work in progress
 
@@ -389,9 +392,10 @@ def func4() :
 def func5() : 
     print("WIP") # Work in progress    
 
-class nonlinear():
+class nonlinear(): # func6
     def main_non_linear(self):
         while True:
+            print()
             print("Non Linear Equation Calculator")
             print("1. Quadratic Equation ( ax^2 + bx + c = 0 )")
             print("2. Exponential Equations ( e^x = 3x )")
@@ -411,19 +415,92 @@ class nonlinear():
                 enter()
 
     def quadratic(self):
-
+        pass
     def exponential(self):
-
+        pass
     def trigonometric(self):
-
+        pass
 nonlin   = nonlinear()
 
 def func7() : 
     print("WIP") # Work in progress
 
 def func8() : 
-    print("WIP") # Work in progress
+    print()
+    print("Simulation is a training method that demonstrates something")
+    print("AS AN IMITATION form that is SIMILAR with real situation")
+    print()
+    print("Some simulation require RANDOM VARIABLE INPUT")
+    print("to produce realistic OUTPUTS")
+    print()
+    enter()
+
+    print()
+    print("Random variable input can be generated with PSEUDO RANDOM NUMBER GENERATOR (PRNG)")
+    print("One example of PRNG that can be used is Linear Congruential Generator (LCG)")
+    print()
+    print("The Formula of LGC is : ")
+    print("Zi = (a * Zi-1 + c) * mod m")
+    print("a = multiplier")
+    print("c = increment")
+    print("m = modulus")
+    print()
+    enter()
+
+    print()
+    print("Input start state ")
+    start = int(input("> "))
+    print("Input a (multiplier) ")
+    a = int(input("> "))
+    print("Input c (increment) ")
+    c = int(input("> "))
+    print("Input m (modulus) ")
+    m = int(input("> "))
+    print("Input iteration ")
+    iteration = int(input("> "))
+    print()
+    data = {'iteration': [], 'calc': [], 'Zi': [], 'mod': [], 'Ui = Zi/m': []}
     
+    print("a = ", a)
+    print("c = ", c)
+    print("m = ", m)
+    print("start = ", start)
+    print()
+
+    print("Zi = (a * Zi-1 + c) * mod m")
+    print("calc = (a * Zi-1 + c)")
+    
+    for i in range(iteration):
+        calc = (a * start + c)
+        mod = m
+        zi = calc % m
+        ui = zi / m
+        
+        data['iteration'].append(i+1)
+        data['calc'].append(calc)
+        data['mod'].append(m)
+        data['Zi'].append(zi)
+        data['Ui = Zi/m'].append(round(ui, 4))
+
+        start = zi
+    
+    print(f"{'iteration':<12}{'calc':<10}{'mod':<7}{'Zi':<8}{'Ui = Zi/m':<12}")
+    print("-" * 40)
+    for i, calc, mod, zi, ui in zip(data['iteration'], data['calc'], data['mod'], data['Zi'],data['Ui = Zi/m']):
+        print(f"{i:<12}{calc:<10}{mod:<7}{zi:<8}{ui:<12}")  
+    print()
+    enter()
+
+    print()
+    print("if you look carefully, around iteration", mod , "or", mod + 1, ", the result of Zi and Ui with iteration 1 are similar")
+    print("The calc, Zi, Ui of iteration number 2 are similar with iteration" , mod + 1, "or" , mod + 2,)
+    print("You might recognize other pattern as well")
+
+    print()
+    print("PNRG has a certain period where if it has reached that period")
+    print("The resulting sequence of numbers will repeat from the beginning, starting the previous pattern")
+    enter()
+
 def func9() : 
     print("WIP") # Work in progress
 
@@ -447,20 +524,20 @@ def main():
         print("\n========= Science Comp Implementation ========")
         print("1. Systems of Linear Equations") # Sistem Persamaan Linear
             # nanti terbagi menjadi 2, cara triangularisasi dan eliminasi gauss
-        print("2. Matrix Practices")
+        print("2. Matrix Practices and Operations")
             # ini bisa cuma ngeprint sifat" matrix, atau menampilkan penerapan matrix nya
         print("3. Invertible Matrik") # Invers Matrix
         print("4. LU Decomposition")
-        print("5. Linear Equations")  # Persamaan linear
+        print("5. Numeric Method of Linear Equations")  # Persamaan linear
             # sebenarnya aku bingung mau implemen ini, karena pptnya gk dikasih ama ibunya
-        print("6. Non Linear Equations")
+        print("6. Numeric Method of Non Linear Equations")
             # ada 2 metode, metode biseksi (metode tertutup) dan newton rhapson (metode terbuka) (pilih salah satu aja gak seh?)
         print("7. Interpolation") # Interpolasi
             # ada 3, interpolasi linear, interpolasi kuadrat/non linear, polinom newton (pilih salah satu aja gak seh?)
         print("8. Basic Simulation")
             # sejauh ini, kalau simulasi..  paling mentok bisa nerapin Linear Congruential Generators (LCG) (PPT Slide 18)
             # LCG itu teori kalau misalkan hasil perhitungannya melebihi mod itu, maka hasil perhitungannya akan kembali seperti semula
-        print("9. Iterasi Theory") # Teori iterasi
+        print("9. Iteration Theory") # Teori iterasi
             # iterasi jacobi dan gauss-seidler
         print("10. Monte-Carlo Simulation")
         print("11. Markov Chain")
