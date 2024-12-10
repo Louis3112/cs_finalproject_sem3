@@ -497,8 +497,8 @@ def func8() :
     print("You might recognize other pattern as well")
 
     print()
-    print("PNRG has a certain period where if it has reached that period")
-    print("The resulting sequence of numbers will repeat from the beginning, starting the previous pattern")
+    print("PNRG has a certain period where if it has reached that period,")
+    print("the resulting sequence of numbers will repeat from the beginning, starting the previous pattern")
     enter()
 
 def func9() : 
