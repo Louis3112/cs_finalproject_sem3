@@ -1,6 +1,8 @@
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+plt.style.context('fivethirtyeight')
+import math
 
 rows = np.random.randint(1,9)
 colls = np.random.randint(1,9)
@@ -395,7 +397,7 @@ def func5() :
 class nonlinear(): # func6
     def main_non_linear(self):
         while True:
-            print()
+            clear()
             print("Non Linear Equation Calculator")
             print("1. Quadratic Equation ( ax^2 + bx + c = 0 )")
             print("2. Exponential Equations ( e^x = 3x )")
@@ -411,11 +413,58 @@ class nonlinear(): # func6
             elif choice == '0':
                 return
             else:
-                input("Invalid choice! Please choose from 1-3.")
+                print("Invalid choice! Please choose from 1-3.")
                 enter()
 
     def quadratic(self):
-        pass
+        while True:
+            clear()
+            print("Quadratic Equation Calculator")
+            a = int(input("Enter coefficient a: "))
+            b = int(input("Enter coefficient b: "))
+            c = int(input("Enter coefficient c: "))
+
+            # Calculate the discriminant
+            d = b ** 2 - 4 * a * c
+
+            if d < 0:
+                print("The equation has no real solutions")
+            elif d == 0:
+                x = (-b + math.sqrt(b ** 2 - 4 * a * c)) / (2 * a)
+                print(f"The equation has one solution: {x} ")
+            else:
+                x1 = (-b + math.sqrt(b ** 2 - 4 * a * c)) / (2 * a)
+                x2 = (-b - math.sqrt(b ** 2 - 4 * a * c)) / (2 * a)
+                print(f"The equation has two solutions: {x1} or {x2}")
+
+            # Calculate the y value for each of x
+            x = np.linspace(-20, 20, 1000)
+            y = a * x ** 2 + b * x + c
+
+            # Plot the x, y pairs
+            fig, ax = plt.subplots()
+            ax.set_title("Quadratic Equations Graphics")
+            ax.plot(x, y)
+
+            ax.set_ylim(-100, 100)
+            ax.set_xlim(-20, 20)
+
+            ymin, ymax = ax.get_ylim()
+            xmin, xmax = ax.get_xlim()
+
+            ax.grid(True, color='gray', linewidth = 0.5)
+            ax.hlines(y=0, xmin=xmin, xmax=xmax, colors='r')
+            ax.vlines(x=0, ymin=ymin, ymax=ymax, color='black', label='full height')
+
+            # Show the plot
+            plt.show()
+            
+            print("Do you want to recalculate the equation? (y/n)")
+            if input("> ") == "y":
+                continue
+            else:
+                break
+
     def exponential(self):
         pass
     def trigonometric(self):
@@ -514,13 +563,13 @@ def enter(): # biar gak perlu klik input() terus
     input("Press Enter to continue")
 
 def main():
-    print("================== Group 7 ===================")
-    print("| 1. Rayhan Hendra Atmadja     075 - TI 23 C |")
-    print("| 2. Adriano Emmanuel          082 - TI 23 C |")
-    print("| 3. Cornelius Louis Nathan    085 - TI 23 C |")
-    print("==============================================")
-
     while True:
+        clear()
+        print("================== Group 7 ===================")
+        print("| 1. Rayhan Hendra Atmadja     075 - TI 23 C |")
+        print("| 2. Adriano Emmanuel          082 - TI 23 C |")
+        print("| 3. Cornelius Louis Nathan    085 - TI 23 C |")
+        print("==============================================")
         print("\n========= Science Comp Implementation ========")
         print("1. Systems of Linear Equations") # Sistem Persamaan Linear
             # nanti terbagi menjadi 2, cara triangularisasi dan eliminasi gauss
@@ -541,7 +590,7 @@ def main():
             # iterasi jacobi dan gauss-seidler
         print("10. Monte-Carlo Simulation")
         print("11. Markov Chain")
-        print("12. Exit\n")
+        print("0. Exit\n")
 
         print("Choose from 1-11")
         try:
@@ -573,9 +622,13 @@ def main():
             func10()
         elif choice == 11:
             func11()
-        elif choice == 12:
+        elif choice == 0:
             print("Thank you")
             break
+        else:
+            print("Invalid choice! Please choose from 1-11.")
+            enter()
+            continue
 
 
 if __name__ == "__main__" : main() 
