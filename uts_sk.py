@@ -1,8 +1,10 @@
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 plt.style.context('fivethirtyeight')
 import math
+import random
 
 rows = np.random.randint(1,9)
 colls = np.random.randint(1,9)
@@ -403,84 +405,31 @@ class nonlinear(): # func6
             print("0. Exit")
             choice = input("> ")
             if choice == '1':
-                self.quadratic()
+                self.bisection()
             elif choice == '0':
                 return
             else:
                 print("Invalid choice! Please choose from 1-3.")
                 enter()
 
-    def quadratic(self):
-        while True:
-            clear()
-            print("Non Linear Equation Calculator")
-            print("1. Regular Quadratic Equation")
-            print("2. Bisection Method")
-            choice = int(input("Enter choice: "))
-            if choice == 1:
-                clear()
-                print("Quadratic Equation Calculator")
-                a = int(input("Enter coefficient a: "))
-                b = int(input("Enter coefficient b: "))
-                c = int(input("Enter coefficient c: "))
-
-                # Calculate the discriminant
-                d = b ** 2 - 4 * a * c
-
-                if d < 0:
-                    print("The equation has no real solutions")
-                elif d == 0:
-                    x = (-b + math.sqrt(b ** 2 - 4 * a * c)) / (2 * a)
-                    print(f"The equation has one solution: {x} ")
-                else:
-                    x1 = (-b + math.sqrt(b ** 2 - 4 * a * c)) / (2 * a)
-                    x2 = (-b - math.sqrt(b ** 2 - 4 * a * c)) / (2 * a)
-                    print(f"The equation has two solutions: {x1} or {x2}")
-
-                # Calculate the y value for each of x
-                x = np.linspace(-20, 20, 1000)
-                y = a * x ** 2 + b * x + c
-
-                # Plot the x, y pairs
-                fig, ax = plt.subplots()
-                ax.set_title("Quadratic Equations Graphics")
-                ax.plot(x, y)
-
-                ax.set_ylim(-100, 100)
-                ax.set_xlim(-20, 20)
-
-                ymin, ymax = ax.get_ylim()
-                xmin, xmax = ax.get_xlim()
-
-                ax.grid(True, color='gray', linewidth = 0.5)
-                ax.hlines(y=0, xmin=xmin, xmax=xmax, colors='r')
-                ax.vlines(x=0, ymin=ymin, ymax=ymax, color='black', label='full height')
-
-                # Show the plot
-                plt.show()
+    def bisection(self):
+        clear()
+        print("Bisection Method Calculator")
+        print("Input Function (e.g x^2 - 4 / x***3 + 2)")
+        self.function_input = input("> ")
+        
+        inter1 = int(input("Enter interval 1: "))
+        inter2 = int(input("Enter interval 2: "))
+        tol = float(input("Enter tolerance (e.g 0.00001): "))
+        bisec = self.bisection1(self.bisec_func, inter1, inter2, tol)
+            
+        if bisec is not None:
+            print(f'Approximate root is {bisec} after {self.iteration} iteration')
+            enter()
+        else:
+            print('Invalid Interval')
+            enter()
                 
-                print("Do you want to recalculate the equation? (y/n)")
-                if input("> ") == "y":
-                    continue
-                else:
-                    break
-            elif choice == 2:
-                clear()
-                print("Bisection Method Calculator")
-                print("Input Function (e.g x^2 - 4 / x***3 + 2)")
-                self.function_input = input("> ")
-                
-                inter1 = int(input("Enter interval 1: "))
-                inter2 = int(input("Enter interval 2: "))
-                tol = float(input("Enter tolerance (e.g 0.00001): "))
-                bisec = self.bisection1(self.bisec_func, inter1, inter2, tol)
-                    
-                if bisec is not None:
-                    print(f'Approximate root is {bisec}')
-                    enter()
-                else:
-                    print('Invalid Interval')
-                    enter()
                     
     def bisection1(self, lin_func, inter1, inter2, tol):
         x1 = lin_func(inter1)
@@ -488,7 +437,7 @@ class nonlinear(): # func6
         
         if x1 * x2 >= 0:
             return None
-        loop = 1
+        self.iteration = 1
         while True:
             midpoint = (inter1 + inter2) / 2
             x3 = lin_func(midpoint)
@@ -500,7 +449,7 @@ class nonlinear(): # func6
                 inter2 = midpoint
             else:
                 inter1 = midpoint
-            loop += 1
+            self.iteration += 1
             if abs(midpoint) - abs(x2) > tol:
                 return midpoint
     
@@ -596,7 +545,60 @@ def func10() :
     print("WIP") # Work in progress
 
 def markov() : 
-    print("WIP") # Work in progress
+    while True:
+        clear()
+        print("Markov Chain Calculator")
+        print("1. Markov Chain")
+        print("0. Exit")
+        choice = input("> ")
+        if choice == '1':
+            clear()
+            print("Markov Chain Calculator")
+            print("Enter transition matrix (e.g 0.3):")
+            print("Sunny -> Sunny: a")
+            print("Sunny -> Rainy: b")
+            print("Rainy -> Sunny: c") 
+            print("Rainy -> Rainy: d")
+            a = float(input("Enter a: "))
+            b = float(input("Enter b: "))
+            c = float(input("Enter c: "))
+            d = float(input("Enter d: "))
+
+            print("Enter starting probabilities (e.g 0.4):")
+            e = float(input("Sunny : "))
+            f = float(input("Rainy : "))
+            iteration = int(input("Enter total iteration: "))
+            transition_matrix = {
+                'Sunny': {'Sunny': a, 'Rainy': b},
+                'Rainy': {'Sunny': c, 'Rainy': d}
+            }
+            starting_probabilities = {'Sunny': e, 'Rainy': f}
+
+            # Choose the starting state randomly based on starting probabilities
+            current_state = random.choices(
+                population=list(starting_probabilities.keys()),
+                weights=list(starting_probabilities.values())
+            )[0]
+
+            # Generate a sequence of states using the transition matrix
+            num_iterations = iteration
+            states_sequence = [current_state]
+
+            for _ in range(num_iterations):
+                next_state = random.choices(
+                    population=list(transition_matrix[current_state].keys()),
+                    weights=list(transition_matrix[current_state].values())
+                )[0]
+                states_sequence.append(next_state)
+                current_state = next_state
+
+            print(states_sequence)
+            input("Press Enter to continue...")
+        elif choice == '0':
+            break
+        else:
+            print("Invalid choice. Please try again.")
+            input("Press Enter to continue...")
         
 def enter(): # biar gak perlu klik input() terus
     input("Press Enter to continue")
