@@ -595,7 +595,7 @@ def func9() :
 def func10() : 
     print("WIP") # Work in progress
 
-def func11() : 
+def markov() : 
     print("WIP") # Work in progress
         
 def enter(): # biar gak perlu klik input() terus
@@ -660,7 +660,7 @@ def main():
         elif choice == 10:
             func10()
         elif choice == 11:
-            func11()
+            markov()
         elif choice == 0:
             print("Thank you")
             break
