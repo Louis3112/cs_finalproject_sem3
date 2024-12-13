@@ -399,17 +399,11 @@ class nonlinear(): # func6
         while True:
             clear()
             print("Non Linear Equation Calculator")
-            print("1. Quadratic Equation ( ax^2 + bx + c = 0 )")
-            print("2. Exponential Equations ( e^x = 3x )")
-            print("3. Trigonometric Equations ( e^x = 0 )")
+            print("1. Quadratic Equation (Bisection Method)")
             print("0. Exit")
             choice = input("> ")
             if choice == '1':
                 self.quadratic()
-            elif choice == '2':
-                self.exponential()
-            elif choice == '3':
-                self.trigonometric()
             elif choice == '0':
                 return
             else:
@@ -419,56 +413,101 @@ class nonlinear(): # func6
     def quadratic(self):
         while True:
             clear()
-            print("Quadratic Equation Calculator")
-            a = int(input("Enter coefficient a: "))
-            b = int(input("Enter coefficient b: "))
-            c = int(input("Enter coefficient c: "))
+            print("Non Linear Equation Calculator")
+            print("1. Regular Quadratic Equation")
+            print("2. Bisection Method")
+            choice = int(input("Enter choice: "))
+            if choice == 1:
+                clear()
+                print("Quadratic Equation Calculator")
+                a = int(input("Enter coefficient a: "))
+                b = int(input("Enter coefficient b: "))
+                c = int(input("Enter coefficient c: "))
 
-            # Calculate the discriminant
-            d = b ** 2 - 4 * a * c
+                # Calculate the discriminant
+                d = b ** 2 - 4 * a * c
 
-            if d < 0:
-                print("The equation has no real solutions")
-            elif d == 0:
-                x = (-b + math.sqrt(b ** 2 - 4 * a * c)) / (2 * a)
-                print(f"The equation has one solution: {x} ")
-            else:
-                x1 = (-b + math.sqrt(b ** 2 - 4 * a * c)) / (2 * a)
-                x2 = (-b - math.sqrt(b ** 2 - 4 * a * c)) / (2 * a)
-                print(f"The equation has two solutions: {x1} or {x2}")
+                if d < 0:
+                    print("The equation has no real solutions")
+                elif d == 0:
+                    x = (-b + math.sqrt(b ** 2 - 4 * a * c)) / (2 * a)
+                    print(f"The equation has one solution: {x} ")
+                else:
+                    x1 = (-b + math.sqrt(b ** 2 - 4 * a * c)) / (2 * a)
+                    x2 = (-b - math.sqrt(b ** 2 - 4 * a * c)) / (2 * a)
+                    print(f"The equation has two solutions: {x1} or {x2}")
 
-            # Calculate the y value for each of x
-            x = np.linspace(-20, 20, 1000)
-            y = a * x ** 2 + b * x + c
+                # Calculate the y value for each of x
+                x = np.linspace(-20, 20, 1000)
+                y = a * x ** 2 + b * x + c
 
-            # Plot the x, y pairs
-            fig, ax = plt.subplots()
-            ax.set_title("Quadratic Equations Graphics")
-            ax.plot(x, y)
+                # Plot the x, y pairs
+                fig, ax = plt.subplots()
+                ax.set_title("Quadratic Equations Graphics")
+                ax.plot(x, y)
 
-            ax.set_ylim(-100, 100)
-            ax.set_xlim(-20, 20)
+                ax.set_ylim(-100, 100)
+                ax.set_xlim(-20, 20)
 
-            ymin, ymax = ax.get_ylim()
-            xmin, xmax = ax.get_xlim()
+                ymin, ymax = ax.get_ylim()
+                xmin, xmax = ax.get_xlim()
 
-            ax.grid(True, color='gray', linewidth = 0.5)
-            ax.hlines(y=0, xmin=xmin, xmax=xmax, colors='r')
-            ax.vlines(x=0, ymin=ymin, ymax=ymax, color='black', label='full height')
+                ax.grid(True, color='gray', linewidth = 0.5)
+                ax.hlines(y=0, xmin=xmin, xmax=xmax, colors='r')
+                ax.vlines(x=0, ymin=ymin, ymax=ymax, color='black', label='full height')
 
-            # Show the plot
-            plt.show()
+                # Show the plot
+                plt.show()
+                
+                print("Do you want to recalculate the equation? (y/n)")
+                if input("> ") == "y":
+                    continue
+                else:
+                    break
+            elif choice == 2:
+                clear()
+                print("Bisection Method Calculator")
+                print("Input Function (e.g x^2 - 4 / x***3 + 2)")
+                self.function_input = input("> ")
+                
+                inter1 = int(input("Enter interval 1: "))
+                inter2 = int(input("Enter interval 2: "))
+                tol = float(input("Enter tolerance (e.g 0.00001): "))
+                bisec = self.bisection1(self.bisec_func, inter1, inter2, tol)
+                    
+                if bisec is not None:
+                    print(f'Approximate root is {bisec}')
+                    enter()
+                else:
+                    print('Invalid Interval')
+                    enter()
+                    
+    def bisection1(self, lin_func, inter1, inter2, tol):
+        x1 = lin_func(inter1)
+        x2 = lin_func(inter2)
+        
+        if x1 * x2 >= 0:
+            return None
+        loop = 1
+        while True:
+            midpoint = (inter1 + inter2) / 2
+            x3 = lin_func(midpoint)
             
-            print("Do you want to recalculate the equation? (y/n)")
-            if input("> ") == "y":
-                continue
-            else:
-                break
+            if abs(x3) < tol :
+                return midpoint
 
-    def exponential(self):
-        pass
-    def trigonometric(self):
-        pass
+            if x1 * x3 < 0:
+                inter2 = midpoint
+            else:
+                inter1 = midpoint
+            loop += 1
+            if abs(midpoint) - abs(x2) > tol:
+                return midpoint
+    
+    def bisec_func(self, inter):
+        x = inter
+        return eval(self.function_input)
+
 nonlin   = nonlinear()
 
 def func7() : 
