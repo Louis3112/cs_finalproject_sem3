@@ -177,9 +177,9 @@ def func2_1():
             continue
 
 def func2_2():
-    A = np.array([[np.random.randint(1,9), np.random.randint(1,9)], [np.random.randint(1,9),np.random.randint(1,9)]])
-    B = np.array([[np.random.randint(1,9), np.random.randint(1,9)], [np.random.randint(1,9),np.random.randint(1,9)]])
-    C = np.array([[np.random.randint(1,9), np.random.randint(1,9)], [np.random.randint(1,9),np.random.randint(1,9)]])
+    A = np.array([[np.random.randint(1,9), np.random.randint(1,9),np.random.randint(1,9)], [np.random.randint(1,9),np.random.randint(1,9),np.random.randint(1,9)],[np.random.randint(1,9), np.random.randint(1,9),np.random.randint(1,9)]])
+    B = np.array([[np.random.randint(1,9), np.random.randint(1,9),np.random.randint(1,9)], [np.random.randint(1,9),np.random.randint(1,9),np.random.randint(1,9)],[np.random.randint(1,9), np.random.randint(1,9),np.random.randint(1,9)]])
+    C = np.array([[np.random.randint(1,9), np.random.randint(1,9),np.random.randint(1,9)], [np.random.randint(1,9),np.random.randint(1,9),np.random.randint(1,9)],[np.random.randint(1,9), np.random.randint(1,9),np.random.randint(1,9)]])
     k = np.random.randint(1,5)
     l = np.random.randint(1,5)
 
@@ -293,7 +293,7 @@ def func2_2():
         elif choice == 7:
             print("\n7. A(BC) = (AB)C\t\tAssociative Multiplication")
             print("\nA(BC)")
-            print("\n",A), print("\n*"), print("\n("), print("\n",B), print("\n* "), print("\n",C), print("\n)")
+            print("\n",A), print("\n*"), print("\n("), print("\n",B), print("\n* "), print  ("\n",C), print("\n)")
             print("\n= "), print("\n",np.dot(A, np.dot(B, C)))
 
             print("\nwhile (AB)C")
@@ -537,7 +537,7 @@ def main():
         print("8. Basic Simulation")
             # sejauh ini, kalau simulasi..  paling mentok bisa nerapin Linear Congruential Generators (LCG) (PPT Slide 18)
             # LCG itu teori kalau misalkan hasil perhitungannya melebihi mod itu, maka hasil perhitungannya akan kembali seperti semula
-        print("9. Iteration Theory") # Teori iterasi
+        print("9. Iterative Method") # Teori iterasi
             # iterasi jacobi dan gauss-seidler
         print("10. Monte-Carlo Simulation")
         print("11. Markov Chain")
