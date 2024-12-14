@@ -574,18 +574,17 @@ def func9() :
     print("Matrix A stores the coefficients of the variables")
     print()
     A = [
-        [3, -0.1, -0.2, 0.5],
-        [0.1, 7, -0.3, -0.2],
-        [0.3, -0.2, 10, -0.5],
-        [0.5, 0.3, -0.2, 8]
+        [4, 1, 1],
+        [4, -8, 1],
+        [-2, 1, 5],
         ]
     print("A: ", A)
     print()
 
-    print("Matrix B stores the constants on the right side of the equations")
-    B = [7.85, -19.3, 71.4, -1.25]
+    print("Matrix b stores the constants on the right side of the equations")
+    b = [7, -21, 15]
     print()
-    print("B: ",B)
+    print("b: ",b)
     print()
     enter()
             
@@ -593,8 +592,8 @@ def func9() :
     print("After some iterations, here's the result of the calculation using Jacobi iterative and Gauss-Seidel iterative")
     print()
     try:
-        solutionJacobi, iterationJacobi = jacobi(A, B)
-        solutionGauss, iterationGauss = gauss_seidel(A, B)
+        solutionJacobi, iterationJacobi = jacobi(A, b)
+        solutionGauss, iterationGauss = gauss_seidel(A, b)
         print("Solution with Jacobi:", solutionJacobi)
         print("Iterations with Jacobi:", iterationJacobi)
         print()
@@ -606,7 +605,7 @@ def func9() :
         print("A * Solution Jacobi\t\t =", np.dot(A, solutionJacobi))
         print("A * Solution Gauss-Seidel\t =", np.dot(A, solutionGauss))
                 
-        print("B\t\t\t\t= ", B)
+        print("B\t\t\t\t = ",b)
         print()
         print("Usually, Jacobi iterative requires more iteration than Gauss-Seidel iterative")
         print()
@@ -619,14 +618,14 @@ def func9() :
         print(e)
         enter()
 
-def jacobi(A,B, x0=None, tolerance=1e-5,max_iterations = 50):
+def jacobi(A,b, x0=None, tolerance=1e-10,max_iterations = 1000):
     A = np.array(A, dtype=float)
-    B = np.array(B, dtype=float)
+    b = np.array(b, dtype=float)
 
     n = len(A)
 
     if x0 is None:
-        x = np.zeros_like(B)
+        x = np.zeros_like(b)
     else:
         x = np.array(x0, dtype=float)
     
@@ -635,34 +634,35 @@ def jacobi(A,B, x0=None, tolerance=1e-5,max_iterations = 50):
 
         for j in range(n):
             sum1 = np.dot(A[j, :], x) - A[j, j] * x[j]
-            x_new[j] = (B[j] - sum1) / A[j, j]
+            x_new[j] = (b[j] - sum1) / A[j, j]
         
         if np.linalg.norm(x_new - x, ord=np.inf) < tolerance:
             return x_new, i + 1
+        
         x = x_new
     raise ValueError(f"Method did not converge after {max_iterations} iterations")
 
-def gauss_seidel(A, B, x0=None, tolerance=1e-5, max_iterations=50):
+def gauss_seidel(A, b, x0=None, tolerance=1e-10, max_iterations=1000):
     A = np.array(A, dtype=float)
-    B = np.array(B, dtype=float)
+    b = np.array(b, dtype=float)
 
     n = len(A)
 
     if x0 is None:
-        x = np.zeros_like(B)
+        x = np.zeros_like(b)
     else:
         x = np.array(x0, dtype=float)
 
-    for i in range(max_iterations):
+    for iteration in range(max_iterations):
         x_old = x.copy()
 
-        for j in range(n):
-            sigma = sum(A[j][k] * x[k] for k in range(n) if k != j)
+        for i in range(n):
+            sigma = sum(A[i][j] * x[j] for j in range(n) if j != i)
             
-            x[j] = (B[j] - sigma) / A[j][j]
+            x[i] = (b[i] - sigma) / A[i][i]
         
         if np.linalg.norm(x - x_old) < tolerance:
-            return x, i + 1
+            return x, iteration + 1
     raise ValueError(f"Method did not converge after {max_iterations} iterations")
 
 def func10() : 
@@ -680,9 +680,10 @@ def print_matrix(matrix_el):
 
 def main():
     print("================== Group 7 ===================")
-    print("| 1. Rayhan Hendra Atmadja     075 - TI 23 C |")
-    print("| 2. Adriano Emmanuel          082 - TI 23 C |")
-    print("| 3. Cornelius Louis Nathan    085 - TI 23 C |")
+    print("| 1. Sandhika Lyandra P        074 - TI 23 C |")
+    print("| 2. Rayhan Hendra Atmadja     075 - TI 23 C |")
+    print("| 3. Adriano Emmanuel          082 - TI 23 C |")
+    print("| 4. Cornelius Louis Nathan    085 - TI 23 C |")
     print("==============================================")
 
     while True:
