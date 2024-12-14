@@ -2,7 +2,6 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-plt.style.context('fivethirtyeight')
 import math
 import random
 
@@ -415,16 +414,16 @@ class nonlinear(): # func6
     def bisection(self):
         clear()
         print("Bisection Method Calculator")
-        print("Input Function (e.g x^2 - 4 / x***3 + 2)")
+        print("Input Function (e.g x**2 - 4 / x***3 + 2)")
         self.function_input = input("> ")
         
         inter1 = int(input("Enter interval 1: "))
         inter2 = int(input("Enter interval 2: "))
         tol = float(input("Enter tolerance (e.g 0.00001): "))
-        bisec = self.bisection1(self.bisec_func, inter1, inter2, tol)
+        root = self.bisection1(self.bisec_func, inter1, inter2, tol)
             
-        if bisec is not None:
-            print(f'Approximate root is {bisec} after {self.iteration} iteration')
+        if root is not None:
+            print(f'Approximate root is {root} after {self.iteration} iteration')
             enter()
         else:
             print('Invalid Interval')
@@ -541,8 +540,93 @@ def func8() :
 def func9() : 
     print("WIP") # Work in progress
 
-def func10() : 
-    print("WIP") # Work in progress
+class MonteCarlo():
+    def monte_carlo_main(self): 
+        while True:
+            clear()
+            print("Monte Carlo Simulation Calculator")
+            print("1. Roulette Simulation")
+            print("0. Exit")
+            choice = input("> ")
+            if choice == '1':
+                while True:
+                    clear()
+                    print("Roulette Simulation Calculator")
+                    print("Bet options: red, green, black, even, odd")
+                    bet_option = input("Enter your bet option: ").strip().lower()
+                    while bet_option not in {"red", "green", "black", "even", "odd"}:
+                        print("Invalid option. Please choose from: red, green, black, even, odd.")
+                        bet_option = input("Enter your bet option: ").strip().lower()
+
+                    try:
+                        iterations = int(input("Enter the number of iterations for the simulation: "))
+                        if iterations <= 0:
+                            raise ValueError("Number of iterations must be greater than 0.")
+                    except ValueError as e:
+                        print(f"Invalid input: {e}")
+                        enter()
+                    # Run simulation
+                    win_percentage, tot_red, tot_black, tot_green, tot_even, tot_odd = self.simulate_roulette(bet_option, iterations)
+
+                    # Display results
+                    print(f"Bet option\t\t: {bet_option.capitalize()}")
+                    print(f"Number of iterations\t: {iterations}")
+                    print(f"Total Red Spins\t\t: {tot_red}")
+                    print(f"Total Black Spins\t: {tot_black}")
+                    print(f"Total Green Spins\t: {tot_green}")
+                    print(f"Total Even Spins\t: {tot_even}")
+                    print(f"Total Odd Spins\t\t: {tot_odd}")
+                    print(f"Win percentage\t\t: {win_percentage:.4f}%")
+                    print("Do you want to run another simulation? (y/n)")
+                    answer = input("> ")
+                    if answer.lower() == "y":
+                        continue
+                    else:
+                        return
+            
+            
+    def simulate_roulette(self, bet_option, iterations):
+        # Define roulette wheel segments
+        red_numbers = {1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36}
+        black_numbers = {2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35}
+        green_numbers = {0}
+
+        wins = 0
+        tot_red, tot_black, tot_green, tot_even, tot_odd = 0, 0, 0, 0, 0
+
+        for _ in range(iterations):
+            # Simulate a spin of the roulette wheel
+            spin_result = random.randint(0, 36)
+
+            # Check if the spin result matches the bet
+            if bet_option == "red" and spin_result in red_numbers:
+                wins += 1
+            elif bet_option == "black" and spin_result in black_numbers:
+                wins += 1
+            elif bet_option == "green" and spin_result in green_numbers:
+                wins += 1
+            elif bet_option == "even" and spin_result != 0 and spin_result % 2 == 0:
+                wins += 1
+            elif bet_option == "odd" and spin_result % 2 == 1:
+                wins += 1
+                
+                
+            if spin_result in red_numbers: 
+                tot_red += 1 
+            elif spin_result in black_numbers: 
+                tot_black += 1 
+            elif spin_result in green_numbers: 
+                tot_green += 1 
+                
+            if spin_result % 2 == 0 and spin_result != 0: 
+                tot_even += 1 
+            elif spin_result % 2 == 1: 
+                tot_odd += 1 
+
+        win_percentage = (wins / iterations) * 100
+        return win_percentage, tot_red, tot_black, tot_green, tot_even, tot_odd
+            
+monte = MonteCarlo()
 
 def markov() : 
     while True:
@@ -553,7 +637,7 @@ def markov() :
         choice = input("> ")
         if choice == '1':
             clear()
-            print("Markov Chain Calculator")
+            print("Markov Chain Weather Prediction")
             print("Enter transition matrix (e.g 0.3):")
             print("Sunny -> Sunny: a")
             print("Sunny -> Rainy: b")
@@ -660,7 +744,7 @@ def main():
         elif choice == 9:
             func9()
         elif choice == 10:
-            func10()
+            monte.monte_carlo_main()
         elif choice == 11:
             markov()
         elif choice == 0:
@@ -672,4 +756,5 @@ def main():
             continue
 
 
-if __name__ == "__main__" : main() 
+if __name__ == "__main__" : 
+    main() 
