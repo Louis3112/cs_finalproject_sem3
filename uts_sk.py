@@ -1,26 +1,26 @@
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-import pandas as pd
-import math
 import random
 
-rows = np.random.randint(1,9)
-colls = np.random.randint(1,9)
-#tes
-def clear():
-  if os.name == 'nt':
-    os.system('cls')
-  else:
-    os.system('clear')
+rows = np.random.randint(1, 9)
+colls = np.random.randint(1, 9)
 
-def func1() : 
+
+def clear():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
+
+
+def func1():
     rowsfunc1, colsfunc1 = map(int, input("Enter size of matrix (rows cols): ").split())
 
     if rowsfunc1 < 2 or colsfunc1 < 2:
         print("Matrix size must be at least 2x2.")
         return  # Kembali jika ukuran tidak valid
-    
+
     if rowsfunc1 != colsfunc1:
         print("Matrix must be square (rows == cols) to solve a system of linear equations.")
         return  # Kembali jika matriks bukan persegi
@@ -32,19 +32,19 @@ def func1() :
     for i in range(rowsfunc1):
         while True:
             try:
-                row = list(map(int, input(f"Enter row #{i+1}: ").split()))
+                row = list(map(int, input(f"Enter row #{i + 1}: ").split()))
                 if len(row) != colls:
                     raise ValueError(f"Row must have exactly {colsfunc1} elements.")
                 matrix.append(row)
                 break
             except ValueError as e:
                 print(e)
-    
+
     print("Enter elements for the vector (y):")
     for i in range(colsfunc1):
         while True:
             try:
-                el = int(input(f"Enter element #{i+1}: "))
+                el = int(input(f"Enter element #{i + 1}: "))
                 y.append(el)
                 break
             except ValueError:
@@ -63,7 +63,8 @@ def func1() :
     print("\nSolution (x):")
     print(x)
 
-def func2() :
+
+def func2():
     while True:
         print()
         print("\nMatrix Properties")
@@ -76,7 +77,7 @@ def func2() :
             print("\nInvalid input, choose from 1-2!")
             enter()
             continue
-        
+
         if choice == 1:
             func2_1()
         elif choice == 2:
@@ -87,9 +88,10 @@ def func2() :
             print("\nInvalid input, choose from 1-2!")
             enter()
             continue
-        
+
+
 def func2_1():
-    while True:    
+    while True:
         print("\nThere are a lot of types of matrices")
         print("1. Zero Matrix")
         print("2. Square Matrix")
@@ -108,12 +110,12 @@ def func2_1():
             print("\nInvalid input, choose from 1-2!")
             enter()
             continue
-        
+
         if choice == 1:
             print("\nZero Matrix or Null Matrix is a matrix with all its elements")
             print("having a VALUE of ZERO.")
-            
-            zeroMatrix = np.zeros((rows,colls))
+
+            zeroMatrix = np.zeros((rows, colls))
             print("\n", zeroMatrix)
             enter()
 
@@ -121,7 +123,7 @@ def func2_1():
             print("\nSquare Matrix is a matrix where the lengths")
             print("of row and the columns ARE the SAME.")
 
-            squareMatrix = np.random.randint(9, size=(4,4))
+            squareMatrix = np.random.randint(9, size=(4, 4))
             print("\n", squareMatrix)
             enter()
 
@@ -129,7 +131,7 @@ def func2_1():
             print("\nRectangular Matrix is a matrix where the lengths")
             print("of row and the column are NOT the SAME.")
 
-            rectangularMatrix = np.random.randint(9, size=(rows,colls))
+            rectangularMatrix = np.random.randint(9, size=(rows, colls))
             print("\n", rectangularMatrix)
             enter()
 
@@ -137,10 +139,10 @@ def func2_1():
             print("\nDiagonal Matrix is a square matrix with the elements")
             print("on the MAIN DIAGONAL having real values while the others are ZERO")
 
-            diagonalMatrix = np.diag([np.random.randint(1,9),np.random.randint(1,9),np.random.randint(1,9)])
+            diagonalMatrix = np.diag([np.random.randint(1, 9), np.random.randint(1, 9), np.random.randint(1, 9)])
             print("\n", diagonalMatrix)
             enter()
-        
+
         elif choice == 5:
             print("\nIdentity Matrix is a square matrix with the elements")
             print("on the MAIN DIAGONAL having a value of '1' while the others are ZERO")
@@ -148,43 +150,50 @@ def func2_1():
             identityMatrix = np.eye(4)
             print("\n", identityMatrix)
             enter()
-        
+
         elif choice == 6:
             print("\nScalar Matrix is a square matrix with the elements")
             print("on the MAIN DIAGONAL having the same values while the others are ZERO")
 
-            scalarMatrix = np.eye(4) * np.random.randint(1,9)
+            scalarMatrix = np.eye(4) * np.random.randint(1, 9)
             print("\n", scalarMatrix)
             enter()
-        
+
         elif choice == 7:
             print("\nRow Matrix is a matrix that only consist of one row")
 
-            rowMatrix = np.array([np.random.randint(1,9), np.random.randint(1,9), np.random.randint(1,9)])
+            rowMatrix = np.array([np.random.randint(1, 9), np.random.randint(1, 9), np.random.randint(1, 9)])
             print("\n", rowMatrix)
             enter()
-        
+
         elif choice == 8:
             print("\nColumn Matrix is a matrix that only consist of one column")
 
-            columnMatrix = np.array([[np.random.randint(1,9)], [np.random.randint(1,9)], [np.random.randint(1,9)]])
+            columnMatrix = np.array([[np.random.randint(1, 9)], [np.random.randint(1, 9)], [np.random.randint(1, 9)]])
             print("\n", columnMatrix)
             enter()
 
         elif choice == 9:
             break
 
-        else:  
+        else:
             print("\nInvalid choice! Please choose from 1-9.")
             enter()
             continue
 
+
 def func2_2():
-    A = np.array([[np.random.randint(1,9), np.random.randint(1,9),np.random.randint(1,9)], [np.random.randint(1,9),np.random.randint(1,9),np.random.randint(1,9)],[np.random.randint(1,9), np.random.randint(1,9),np.random.randint(1,9)]])
-    B = np.array([[np.random.randint(1,9), np.random.randint(1,9),np.random.randint(1,9)], [np.random.randint(1,9),np.random.randint(1,9),np.random.randint(1,9)],[np.random.randint(1,9), np.random.randint(1,9),np.random.randint(1,9)]])
-    C = np.array([[np.random.randint(1,9), np.random.randint(1,9),np.random.randint(1,9)], [np.random.randint(1,9),np.random.randint(1,9),np.random.randint(1,9)],[np.random.randint(1,9), np.random.randint(1,9),np.random.randint(1,9)]])
-    k = np.random.randint(1,5)
-    l = np.random.randint(1,5)
+    A = np.array([[np.random.randint(1, 9), np.random.randint(1, 9), np.random.randint(1, 9)],
+                  [np.random.randint(1, 9), np.random.randint(1, 9), np.random.randint(1, 9)],
+                  [np.random.randint(1, 9), np.random.randint(1, 9), np.random.randint(1, 9)]])
+    B = np.array([[np.random.randint(1, 9), np.random.randint(1, 9), np.random.randint(1, 9)],
+                  [np.random.randint(1, 9), np.random.randint(1, 9), np.random.randint(1, 9)],
+                  [np.random.randint(1, 9), np.random.randint(1, 9), np.random.randint(1, 9)]])
+    C = np.array([[np.random.randint(1, 9), np.random.randint(1, 9), np.random.randint(1, 9)],
+                  [np.random.randint(1, 9), np.random.randint(1, 9), np.random.randint(1, 9)],
+                  [np.random.randint(1, 9), np.random.randint(1, 9), np.random.randint(1, 9)]])
+    k = np.random.randint(1, 5)
+    l = np.random.randint(1, 5)
 
     while True:
         print("\nMatrix has a lot of behavior")
@@ -215,12 +224,12 @@ def func2_2():
         if choice == 1:
             print("\n1. A + B = B + A\t\tCommutative Addition")
             print("\nA + B")
-            print("\n",A), print("\n+ "), print("\n",B)
-            print("\n= "), print("\n",A + B)
+            print("\n", A), print("\n+ "), print("\n", B)
+            print("\n= "), print("\n", A + B)
 
             print("\nwhile B + A")
-            print("\n",B), print("\n+ "), print("\n",A)
-            print("\n= "), print("\n",B + A)
+            print("\n", B), print("\n+ "), print("\n", A)
+            print("\n= "), print("\n", B + A)
 
             print("\nTherefore, A + B = B + A is TRUE")
             enter()
@@ -228,12 +237,12 @@ def func2_2():
         elif choice == 2:
             print("\n2. A + (B + C) = (A + B) + C\tAssociative Addition")
             print("\nA + (B + C)")
-            print("\n",A), print("\n+ ( "), print("\n",B), print("\n+ "), print("\n",C), print("\n)")
-            print("\n= "), print("\n",A + (B + C))
+            print("\n", A), print("\n+ ( "), print("\n", B), print("\n+ "), print("\n", C), print("\n)")
+            print("\n= "), print("\n", A + (B + C))
 
             print("\nwhile (A + B) + C")
-            print("\n( "), print("\n",A), print("\n+ "), print("\n",B), print("\n)"), print("\n+ "),print("\n",C), 
-            print("\n= "), print("\n",(A + B) + C)
+            print("\n( "), print("\n", A), print("\n+ "), print("\n", B), print("\n)"), print("\n+ "), print("\n", C),
+            print("\n= "), print("\n", (A + B) + C)
 
             print("\nTherefore, A + (B + C) = (A + B) + C is TRUE")
             enter()
@@ -241,12 +250,12 @@ def func2_2():
         elif choice == 3:
             print("\n3. k * (A + B) = kA + kB\tDistributive Multiplication With Scalar")
             print("\nk * (A + B)")
-            print("\n",k," *"), print("\n( "), print("\n",A), print("\n+ "), print("\n",B), print("\n )")
-            print("\n= "), print("\n",k * (A + B))
+            print("\n", k, " *"), print("\n( "), print("\n", A), print("\n+ "), print("\n", B), print("\n )")
+            print("\n= "), print("\n", k * (A + B))
 
             print("\nwhile kA + kB")
-            print("\n",k," *"), print("\n",A), print("\n+ "), print("\n",k," *"), print("\n",B),
-            print("\n= "), print("\n",k*A + k*B)
+            print("\n", k, " *"), print("\n", A), print("\n+ "), print("\n", k, " *"), print("\n", B),
+            print("\n= "), print("\n", k * A + k * B)
 
             print("\nTherefore, k * (A + B) = kA + kB is TRUE")
             enter()
@@ -254,12 +263,12 @@ def func2_2():
         elif choice == 4:
             print("\n4. (k+l) A = kA + lA\t\tDistributive Multiplication With Scalar")
             print("\n(k+l) A")
-            print("\n(",k," + ",l,")"), print("\n* "), print("\n",A)
-            print("\n= "), print("\n",(k+l) * A)
+            print("\n(", k, " + ", l, ")"), print("\n* "), print("\n", A)
+            print("\n= "), print("\n", (k + l) * A)
 
             print("\nwhile kA + lA")
-            print("\n",k," *"), print("\n",A), print("\n+ "), print("\n",l," *"), print("\n",A),
-            print("\n= "), print("\n",k*A + l*A)
+            print("\n", k, " *"), print("\n", A), print("\n+ "), print("\n", l, " *"), print("\n", A),
+            print("\n= "), print("\n", k * A + l * A)
 
             print("\nTherefore, (k+l) A = kA + lA is TRUE")
             enter()
@@ -267,77 +276,77 @@ def func2_2():
         elif choice == 5:
             print("\n5. (kl) A = k(lA)\t\t\tAssociative Multiplication With Scalar")
             print("\n(kl) A")
-            print("\n(",k," * ",l,")"), print("\n",A)
-            print("\n= "), print("\n",(k * l) * A)
+            print("\n(", k, " * ", l, ")"), print("\n", A)
+            print("\n= "), print("\n", (k * l) * A)
 
             print("\nwhile k(lA)")
-            print("\n",k," *"), print("\n(",l," *"), print("\n",A), print("\n)") 
-            print("\n= "), print("\n",k*(l*A))
+            print("\n", k, " *"), print("\n(", l, " *"), print("\n", A), print("\n)")
+            print("\n= "), print("\n", k * (l * A))
 
             print("\nTherefore, (kl) A = k(lA) is TRUE")
             enter()
-        
+
         elif choice == 6:
             print("\n6. k(A * B) = (kA) * B = A * (kB)\tDistributive Multiplication With Scalar")
             print("\nk(A * B)")
-            print("\n",k," * "), print("\n("), print("\n",A), print("\n* "), print("\n",B)
-            print("\n= "), print("\n",k * np.dot(A, B))
+            print("\n", k, " * "), print("\n("), print("\n", A), print("\n* "), print("\n", B)
+            print("\n= "), print("\n", k * np.dot(A, B))
 
             print("\nwhile (kA) * B")
-            print("\n(",k," * "), print("\n",A), print("\n)"), print("\n* "), print("\n",B)
-            print("\n= "), print("\n",np.dot(k * A, B))
+            print("\n(", k, " * "), print("\n", A), print("\n)"), print("\n* "), print("\n", B)
+            print("\n= "), print("\n", np.dot(k * A, B))
 
             print("\nwhile A * (kB)")
-            print("\n",A), print("\n*"), print("\n("), print("\n(",k," * "), print("\n",B), print("\n)")
-            print("\n= "), print("\n",np.dot(A, k * B))
+            print("\n", A), print("\n*"), print("\n("), print("\n(", k, " * "), print("\n", B), print("\n)")
+            print("\n= "), print("\n", np.dot(A, k * B))
             print("\nTherefore, k(A * B) = (kA) * B = A * (kB) is TRUE")
             enter()
 
         elif choice == 7:
             print("\n7. A(BC) = (AB)C\t\tAssociative Multiplication")
             print("\nA(BC)")
-            print("\n",A), print("\n*"), print("\n("), print("\n",B), print("\n* "), print  ("\n",C), print("\n)")
-            print("\n= "), print("\n",np.dot(A, np.dot(B, C)))
+            print("\n", A), print("\n*"), print("\n("), print("\n", B), print("\n* "), print("\n", C), print("\n)")
+            print("\n= "), print("\n", np.dot(A, np.dot(B, C)))
 
             print("\nwhile (AB)C")
-            print("\n("), print("\n",A), print("\n*"), print("\n",B), print("\n)"), print("\n* "),print("\n",C)
-            print("\n= "), print("\n",np.dot(np.dot(A, B), C))
+            print("\n("), print("\n", A), print("\n*"), print("\n", B), print("\n)"), print("\n* "), print("\n", C)
+            print("\n= "), print("\n", np.dot(np.dot(A, B), C))
             print("\nTherefore, A(BC) = (AB)C is TRUE")
             enter()
 
         elif choice == 8:
             print("\n8. A(B + C) = AB + AC\t\tDistributive Addition")
             print("\nA(B+C)")
-            print("\n",A), print("\n*"), print("\n("), print("\n",B), print("\n+ "), print("\n",C), print("\n)")
-            print("\n= "), print("\n",np.dot(A, B + C))
+            print("\n", A), print("\n*"), print("\n("), print("\n", B), print("\n+ "), print("\n", C), print("\n)")
+            print("\n= "), print("\n", np.dot(A, B + C))
 
             print("\nwhile AB + AC")
-            print("\n",A), print("\n*"), print("\n",B), print("\n+"), print("\n",A), print("\n*"), print("\n",C)
-            print("\n= "), print("\n",np.dot(A, B) + np.dot(A, C))
+            print("\n", A), print("\n*"), print("\n", B), print("\n+"), print("\n", A), print("\n*"), print("\n", C)
+            print("\n= "), print("\n", np.dot(A, B) + np.dot(A, C))
             print("\nTherefore, A(B+C) = AB + AC is TRUE")
             enter()
 
         elif choice == 9:
             print("\n9. (A + B)C = AC + BC\t\tDistributive Addition")
             print("\n(A+B)C")
-            print("\n("), print("\n",A), print("\n+"), print("\n",B), print("\n)"), print("\n* "), print("\n",C), 
-            print("\n= "), print("\n",np.dot(A + B, C))
+            print("\n("), print("\n", A), print("\n+"), print("\n", B), print("\n)"), print("\n* "), print("\n", C),
+            print("\n= "), print("\n", np.dot(A + B, C))
 
             print("\nwhile AC + BC")
-            print("\n",A), print("\n*"), print("\n",C), print("\n+"), print("\n",B), print("\n*"), print("\n",C)
-            print("\n= "), print("\n",np.dot(A, C) + np.dot(B, C))
+            print("\n", A), print("\n*"), print("\n", C), print("\n+"), print("\n", B), print("\n*"), print("\n", C)
+            print("\n= "), print("\n", np.dot(A, C) + np.dot(B, C))
             print("\nTherefore, (A+B)C = AC + BC is TRUE")
             enter()
 
         elif choice == 10:
             print("\n10. A * B != B * A\t\tNot Commutative Multiplication")
             print("\nA * B")
-            print("\n",A), print("\n*"), print("\n",B)
-            print("\n= "), print("\n",np.dot(A, B))
+            print("\n", A), print("\n*"), print("\n", B)
+            print("\n= "), print("\n", np.dot(A, B))
 
             print("\nwhile B * A")
-            print("\n",B), print("\n*"), print("\n",A)
-            print("\n= "), print("\n",np.dot(B, A))
+            print("\n", B), print("\n*"), print("\n", A)
+            print("\n= "), print("\n", np.dot(B, A))
             print("\nSince the results are different")
             print("Therefore, A * B != B * A is TRUE")
             enter()
@@ -349,12 +358,12 @@ def func2_2():
             CKhusus = np.array([[48, -19], [0, 0]])
 
             print("\nA * B")
-            print("\n",AKhusus), print("\n*"), print("\n",BKhusus)
-            print("\n= "), print("\n",np.dot(AKhusus, BKhusus))
+            print("\n", AKhusus), print("\n*"), print("\n", BKhusus)
+            print("\n= "), print("\n", np.dot(AKhusus, BKhusus))
 
             print("\nA * C")
-            print("\n",AKhusus), print("\n*"), print("\n",CKhusus)
-            print("\n= "), print("\n",np.dot(AKhusus, CKhusus))
+            print("\n", AKhusus), print("\n*"), print("\n", CKhusus)
+            print("\n= "), print("\n", np.dot(AKhusus, CKhusus))
 
             print("\nEven the results are same, but B != C")
             print("Therefore, if A * B = A * C, does not mean B = C is TRUE")
@@ -371,26 +380,21 @@ def func2_2():
             print(np.array([[0, 0], [0, 0]]))
 
             print("\nBut if A != 0 * B != 0")
-            print("\n",AKhusus), print("\n*"), print("\n",BKhusus)
-            print("\n= "), print("\n",np.dot(AKhusus, BKhusus))
+            print("\n", AKhusus), print("\n*"), print("\n", BKhusus)
+            print("\n= "), print("\n", np.dot(AKhusus, BKhusus))
 
             print("\nTherefore, if A * B = 0, it's either A = 0 and B = 0")
             print("                  or A != 0 and B != 0")
             enter()
-        
+
         elif choice == 13:
             break
 
-        else:  
+        else:
             print("\nInvalid choice! Please choose from 1-13.")
             enter()
             continue
-<<<<<<< HEAD
 
-def func3() : 
-    print("WIP") # Work in progress
-=======
->>>>>>> main
 
 def inverse_matrix(matrix_el):
     A = np.array(matrix_el, dtype=np.float64)
@@ -401,10 +405,69 @@ def inverse_matrix(matrix_el):
 
     if n != A.shape[1]:
         raise ValueError("Matrix must be square")
-    
+
     augmented = np.column_stack((A, np.eye(n)))
 
-<<<<<<< HEAD
+    for i in range(n):
+        max_element = abs(augmented[i:, i]).argmax() + i
+
+        if max_element != i:
+            augmented[[i, max_element]] = augmented[[max_element, i]]
+
+        if np.isclose(augmented[i, i], 0):
+            raise ValueError("Matrix is not invertible")
+
+        augmented[i] = augmented[i] / augmented[i, i]
+
+        for j in range(n):
+            if i != j:
+                augmented[j] -= augmented[i] * augmented[j, i]
+
+    return augmented[:, n:]
+
+
+def lu_decomposition(A):
+    n = len(A)
+    L = [[0] * n for _ in range(n)]
+    U = [[0] * n for _ in range(n)]
+    print("L: ", L)
+    print("U: ", U)
+
+    for i in range(n):
+        for j in range(i, n):
+            U[i][j] = A[i][j] - sum(L[i][k] * U[k][j] for k in range(i))
+        for j in range(i, n):
+            if i == j:
+                L[i][i] = 1
+            else:
+                L[j][i] = (A[j][i] - sum(L[j][k] * U[k][i] for k in range(i))) / U[i][i]
+
+    return L, U
+
+
+def plot_linear_equation_point_slope(point, slope, x_range=(-10, 10)):
+    x0, y0 = point
+
+    x = np.linspace(x_range[0], x_range[1], 100)
+
+    y = slope * (x - x0) + y0
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(x, y, label=f'Line: y - {y0} = {slope}(x - {x0})')
+
+    plt.plot(x0, y0, 'ro', label='Given Point')
+
+    plt.title('Point-Slope Form Linear Equation')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.axhline(y=0, color='k', linewidth=0.5)
+    plt.axvline(x=0, color='k', linewidth=0.5)
+    plt.grid(True, linestyle='--', alpha=0.7)
+    plt.legend()
+
+    plt.show()
+
+
 class nonlinear(): # func6
     def main_non_linear(self):
         while True:
@@ -416,73 +479,6 @@ class nonlinear(): # func6
             print("in half and then check if the function is increasing")
             print("or decreasing on each half of the interval\n")
             print("1. Quadratic Equation (Bisection Method)")
-=======
-    for i in range(n):
-        max_element = abs(augmented[i:, i]).argmax() + i
-
-        if max_element != i:
-            augmented[[i, max_element]] = augmented[[max_element, i]]
-            
-        if np.isclose(augmented[i, i], 0):
-            raise ValueError("Matrix is not invertible")
-        
-        augmented[i] = augmented[i] / augmented[i, i]
-
-        for j in range(n):
-            if i != j:
-                augmented[j] -= augmented[i] * augmented[j, i]
-
-    return augmented[:, n:]
-
-def lu_decomposition(A): 
-    n = len(A)
-    L = [[0]*n for _ in range(n)]
-    U = [[0]*n for _ in range(n)]
-    print("L: ", L)
-    print("U: ", U)
-
-    for i in range(n):
-        for j in range(i, n): 
-            U[i][j] = A[i][j] - sum(L[i][k]*U[k][j] for k in range(i))
-        for j in range(i, n):
-            if i == j:
-                L[i][i] = 1
-            else:
-                L[j][i] = (A[j][i] - sum(L[j][k]*U[k][i] for k in range(i))) / U[i][i]
-
-    return L, U
-    
-def plot_linear_equation_point_slope(point, slope, x_range=(-10, 10)):
-    x0, y0 = point
-    
-    x = np.linspace(x_range[0], x_range[1], 100)
-    
-    y = slope * (x - x0) + y0
-    
-    plt.figure(figsize=(10, 6))
-    plt.plot(x, y, label=f'Line: y - {y0} = {slope}(x - {x0})')
-    
-    plt.plot(x0, y0, 'ro', label='Given Point')
-
-    plt.title('Point-Slope Form Linear Equation')
-    plt.xlabel('x')
-    plt.ylabel('y')
-    plt.axhline(y=0, color='k', linewidth=0.5)
-    plt.axvline(x=0, color='k', linewidth=0.5)
-    plt.grid(True, linestyle='--', alpha=0.7)
-    plt.legend()
-    
-    plt.show()   
-
-class nonlinear(): # func6
-    def main_non_linear(self):
-        while True:
-            print()
-            print("Non Linear Equation Calculator")
-            print("1. Quadratic Equation ( ax^2 + bx + c = 0 )")
-            print("2. Exponential Equations ( e^x = 3x )")
-            print("3. Trigonometric Equations ( e^x = 0 )")
->>>>>>> main
             print("0. Exit")
             choice = input("> ")
             if choice == '1':
@@ -493,7 +489,6 @@ class nonlinear(): # func6
                 print("Invalid choice! Please choose from 1-3.")
                 enter()
 
-<<<<<<< HEAD
     def bisection(self):
         clear()
         print("Bisection Method Calculator")
@@ -539,20 +534,14 @@ class nonlinear(): # func6
         x = inter
         return eval(self.function_input)
 
-=======
-    def quadratic(self):
-        pass
-    def exponential(self):
-        pass
-    def trigonometric(self):
-        pass
->>>>>>> main
-nonlin   = nonlinear()
+nonlin = nonlinear()
 
-def func7() : 
-    print("WIP") # Work in progress
 
-def func8() : 
+def func7():
+    print("WIP")  # Work in progress
+
+
+def func8():
     print()
     print("Simulation is a training method that demonstrates something")
     print("AS AN IMITATION form that is SIMILAR with real situation")
@@ -587,7 +576,7 @@ def func8() :
     iteration = int(input("> "))
     print()
     data = {'iteration': [], 'calc': [], 'Zi': [], 'mod': [], 'Ui = Zi/m': []}
-    
+
     print("a = ", a)
     print("c = ", c)
     print("m = ", m)
@@ -596,46 +585,40 @@ def func8() :
 
     print("Zi = (a * Zi-1 + c) * mod m")
     print("calc = (a * Zi-1 + c)")
-    
+
     for i in range(iteration):
         calc = (a * start + c)
         mod = m
         zi = calc % m
         ui = zi / m
-        
-        data['iteration'].append(i+1)
+
+        data['iteration'].append(i + 1)
         data['calc'].append(calc)
         data['mod'].append(m)
         data['Zi'].append(zi)
         data['Ui = Zi/m'].append(round(ui, 4))
 
         start = zi
-    
+
     print(f"{'iteration':<12}{'calc':<10}{'mod':<7}{'Zi':<8}{'Ui = Zi/m':<12}")
     print("-" * 40)
-    for i, calc, mod, zi, ui in zip(data['iteration'], data['calc'], data['mod'], data['Zi'],data['Ui = Zi/m']):
-        print(f"{i:<12}{calc:<10}{mod:<7}{zi:<8}{ui:<12}")  
+    for i, calc, mod, zi, ui in zip(data['iteration'], data['calc'], data['mod'], data['Zi'], data['Ui = Zi/m']):
+        print(f"{i:<12}{calc:<10}{mod:<7}{zi:<8}{ui:<12}")
     print()
     enter()
 
     print()
-    print("if you look carefully, around iteration", mod , "or", mod + 1, ", the result of Zi and Ui with iteration 1 are similar")
-    print("The calc, Zi, Ui of iteration number 2 are similar with iteration" , mod + 1, "or" , mod + 2,)
+    print("if you look carefully, around iteration", mod, "or", mod + 1,
+          ", the result of Zi and Ui with iteration 1 are similar")
+    print("The calc, Zi, Ui of iteration number 2 are similar with iteration", mod + 1, "or", mod + 2, )
     print("You might recognize other pattern as well")
 
     print()
-<<<<<<< HEAD
-    print("PNRG has a certain period where if it has reached that period")
-    print("The resulting sequence of numbers will repeat from the beginning, starting the previous pattern")
-    enter()
-
-def func9() : 
-    print("WIP") # Work in progress
-=======
     print("PNRG has a certain period where if it has reached that period,")
     print("the resulting sequence of numbers will repeat from the beginning, starting the previous pattern")
 
-def func9() :
+
+def func9():
     print()
     print("Iterative method is one of the ways to solve complex linear equations")
     print()
@@ -643,7 +626,6 @@ def func9() :
     print("until the solution CONVERGES with desired accuracy")
     print()
     enter()
-            
 
     print("To solve the complex linear equation, we have to convert the linear equation into 2 matrixes")
     print("Matrix A stores the coefficients of the variables")
@@ -652,19 +634,20 @@ def func9() :
         [4, 1, 1],
         [4, -8, 1],
         [-2, 1, 5],
-        ]
+    ]
     print("A: ", A)
     print()
 
     print("Matrix b stores the constants on the right side of the equations")
     b = [7, -21, 15]
     print()
-    print("b: ",b)
+    print("b: ", b)
     print()
     enter()
-            
+
     print()
-    print("After some iterations, here's the result of the calculation using Jacobi iterative and Gauss-Seidel iterative")
+    print(
+        "After some iterations, here's the result of the calculation using Jacobi iterative and Gauss-Seidel iterative")
     print()
     try:
         solutionJacobi, iterationJacobi = jacobi(A, b)
@@ -675,12 +658,12 @@ def func9() :
 
         print("Solution with Gauss-Seidel:", solutionGauss)
         print("Iterations with Gauss-Seidel:", iterationGauss)
-                
+
         print("\nVerification:")
         print("A * Solution Jacobi\t\t =", np.dot(A, solutionJacobi))
         print("A * Solution Gauss-Seidel\t =", np.dot(A, solutionGauss))
-                
-        print("B\t\t\t\t = ",b)
+
+        print("B\t\t\t\t = ", b)
         print()
         print("Usually, Jacobi iterative requires more iteration than Gauss-Seidel iterative")
         print()
@@ -688,12 +671,13 @@ def func9() :
         print("If we want a MORE ACCURATE solution, we can decrease the TOLERANCE VALUE")
         print()
         enter()
-        
+
     except ValueError as e:
         print(e)
         enter()
 
-def jacobi(A,b, x0=None, tolerance=1e-10,max_iterations = 1000):
+
+def jacobi(A, b, x0=None, tolerance=1e-10, max_iterations=1000):
     A = np.array(A, dtype=float)
     b = np.array(b, dtype=float)
 
@@ -703,19 +687,20 @@ def jacobi(A,b, x0=None, tolerance=1e-10,max_iterations = 1000):
         x = np.zeros_like(b)
     else:
         x = np.array(x0, dtype=float)
-    
+
     for i in range(max_iterations):
         x_new = np.zeros_like(x)
 
         for j in range(n):
             sum1 = np.dot(A[j, :], x) - A[j, j] * x[j]
             x_new[j] = (b[j] - sum1) / A[j, j]
-        
+
         if np.linalg.norm(x_new - x, ord=np.inf) < tolerance:
             return x_new, i + 1
-        
+
         x = x_new
     raise ValueError(f"Method did not converge after {max_iterations} iterations")
+
 
 def gauss_seidel(A, b, x0=None, tolerance=1e-10, max_iterations=1000):
     A = np.array(A, dtype=float)
@@ -733,13 +718,13 @@ def gauss_seidel(A, b, x0=None, tolerance=1e-10, max_iterations=1000):
 
         for i in range(n):
             sigma = sum(A[i][j] * x[j] for j in range(n) if j != i)
-            
+
             x[i] = (b[i] - sigma) / A[i][i]
-        
+
         if np.linalg.norm(x - x_old) < tolerance:
             return x, iteration + 1
     raise ValueError(f"Method did not converge after {max_iterations} iterations")
->>>>>>> main
+
 
 class MonteCarlo():
     def monte_carlo_main(self): 
@@ -844,8 +829,9 @@ def markov() :
         clear()
         print("Markov Chain Calculator\n")
         print("Markov Chain is a mathematical model that")
-        print("describes the transitions between states in a system")
-        print("")
+        print("describes the transitions between states in a system\n")
+        print("The future state of the system depends on the current state")
+        print("and the probabilities of the transitions between states\n")
         print("1. Markov Chain")
         print("0. Exit")
         choice = input("> ")
@@ -897,54 +883,44 @@ def markov() :
         else:
             print("Invalid choice. Please try again.")
             input("Press Enter to continue...")
-        
-def enter(): # biar gak perlu klik input() terus
+
+
+def enter():  # biar gak perlu klik input() terus
     input("Press Enter to continue")
+
 
 def print_matrix(matrix_el):
     for row in matrix_el:
         print(" ".join(f"{x:8.4f}" for x in row))
 
-def main():
-<<<<<<< HEAD
-=======
-    print("================== Group 7 ===================")
-    print("| 1. Sandhika Lyandra P        074 - TI 23 C |")
-    print("| 2. Rayhan Hendra Atmadja     075 - TI 23 C |")
-    print("| 3. Adriano Emmanuel          082 - TI 23 C |")
-    print("| 4. Cornelius Louis Nathan    085 - TI 23 C |")
-    print("==============================================")
 
->>>>>>> main
+def main():
     while True:
         clear()
         print("================== Group 7 ===================")
-        print("| 1. Rayhan Hendra Atmadja     075 - TI 23 C |")
-        print("| 2. Adriano Emmanuel          082 - TI 23 C |")
-        print("| 3. Cornelius Louis Nathan    085 - TI 23 C |")
+        print("| 1. Sandhika Lyandra P        074 - TI 23 C |")
+        print("| 2. Rayhan Hendra Atmadja     075 - TI 23 C |")
+        print("| 3. Adriano Emmanuel          082 - TI 23 C |")
+        print("| 4. Cornelius Louis Nathan    085 - TI 23 C |")
         print("==============================================")
         print("\n========= Science Comp Implementation ========")
-        print("1. Systems of Linear Equations") # Sistem Persamaan Linear
-            # nanti terbagi menjadi 2, cara triangularisasi dan eliminasi gauss
+        print("1. Systems of Linear Equations")  # Sistem Persamaan Linear
+        # nanti terbagi menjadi 2, cara triangularisasi dan eliminasi gauss
         print("2. Matrix Practices and Operations")
-            # ini bisa cuma ngeprint sifat" matrix, atau menampilkan penerapan matrix nya
-        print("3. Invertible Matrik") # Invers Matrix
+        # ini bisa cuma ngeprint sifat" matrix, atau menampilkan penerapan matrix nya
+        print("3. Invertible Matrik")  # Invers Matrix
         print("4. LU Decomposition")
         print("5. Numeric Method of Linear Equations")  # Persamaan linear
-            # sebenarnya aku bingung mau implemen ini, karena pptnya gk dikasih ama ibunya
+        # sebenarnya aku bingung mau implemen ini, karena pptnya gk dikasih ama ibunya
         print("6. Numeric Method of Non Linear Equations")
-            # ada 2 metode, metode biseksi (metode tertutup) dan newton rhapson (metode terbuka) (pilih salah satu aja gak seh?)
-        print("7. Interpolation") # Interpolasi
-            # ada 3, interpolasi linear, interpolasi kuadrat/non linear, polinom newton (pilih salah satu aja gak seh?)
+        # ada 2 metode, metode biseksi (metode tertutup) dan newton rhapson (metode terbuka) (pilih salah satu aja gak seh?)
+        print("7. Interpolation")  # Interpolasi
+        # ada 3, interpolasi linear, interpolasi kuadrat/non linear, polinom newton (pilih salah satu aja gak seh?)
         print("8. Basic Simulation")
-            # sejauh ini, kalau simulasi..  paling mentok bisa nerapin Linear Congruential Generators (LCG) (PPT Slide 18)
-            # LCG itu teori kalau misalkan hasil perhitungannya melebihi mod itu, maka hasil perhitungannya akan kembali seperti semula
-<<<<<<< HEAD
-        print("9. Iteration Theory") # Teori iterasi
-=======
-        print("9. Iterative Method") # Teori iterasi
->>>>>>> main
-            # iterasi jacobi dan gauss-seidler
+        # sejauh ini, kalau simulasi..  paling mentok bisa nerapin Linear Congruential Generators (LCG) (PPT Slide 18)
+        # LCG itu teori kalau misalkan hasil perhitungannya melebihi mod itu, maka hasil perhitungannya akan kembali seperti semula
+        print("9. Iterative Method")  # Teori iterasi
+        # iterasi jacobi dan gauss-seidler
         print("10. Monte-Carlo Simulation")
         print("11. Markov Chain")
         print("0. Exit\n")
@@ -995,7 +971,7 @@ def main():
             # Persamaan : y = mx + b = 5x - 3/4
             # m(slope) = -3/4
             # b(y-intercept) = 5
-            plot_linear_equation_point_slope(point=(0, 5), slope=-3/4)
+            plot_linear_equation_point_slope(point=(0, 5), slope=-3 / 4)
             enter()
 
         elif choice == 6:
@@ -1011,26 +987,17 @@ def main():
             func9()
 
         elif choice == 10:
-<<<<<<< HEAD
             monte.monte_carlo_main()
+
         elif choice == 11:
             markov()
+
         elif choice == 0:
-=======
-            func10()
-
-        elif choice == 11:
-            func11()
-
-        elif choice == 12:
->>>>>>> main
             print("Thank you")
             break
         else:
             print("Invalid choice! Please choose from 1-11.")
             enter()
-            continue
 
 
-if __name__ == "__main__" : 
-    main() 
+if __name__ == "__main__": main()
