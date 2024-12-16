@@ -1,4 +1,7 @@
 
+<<<<<<< HEAD
+    if rowsfunc1 < 2 or colsfunc1 < 2:
+=======
     if rowsfunc1 != colsfunc1:
         print("Matrix must be square (rows == cols) to solve a system of linear equations.")
         return  # Kembali jika matriks bukan persegi
@@ -10,3 +13,4 @@
     for i in range(rowsfunc1):
         while True:
             try:
+>>>>>>> main
