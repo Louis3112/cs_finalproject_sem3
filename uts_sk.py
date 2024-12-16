@@ -399,7 +399,12 @@ class nonlinear(): # func6
     def main_non_linear(self):
         while True:
             clear()
-            print("Non Linear Equation Calculator")
+            print("Non Linear Equation Calculator\n")
+            print("Bisection Method is a numerical method")
+            print("for finding the root of a nonlinear equation")
+            print("Using the bisection method, we divide the interval")
+            print("in half and then check if the function is increasing")
+            print("or decreasing on each half of the interval\n")
             print("1. Quadratic Equation (Bisection Method)")
             print("0. Exit")
             choice = input("> ")
@@ -544,7 +549,11 @@ class MonteCarlo():
     def monte_carlo_main(self): 
         while True:
             clear()
-            print("Monte Carlo Simulation Calculator")
+            print("Monte Carlo Simulation Calculator\n")
+            print("Monte Carlo is a simulation technique used to approximate the probability of an event\n")
+            print("by running a large number of simulations and then analyzing the results\n")
+            print("This Program will implement Monte Carlo \
+Simulation to calculate the probability of winning a roulette\n")
             print("1. Roulette Simulation")
             print("0. Exit")
             choice = input("> ")
@@ -566,7 +575,8 @@ class MonteCarlo():
                         print(f"Invalid input: {e}")
                         enter()
                     # Run simulation
-                    win_percentage, tot_red, tot_black, tot_green, tot_even, tot_odd = self.simulate_roulette(bet_option, iterations)
+                    win_percentage, tot_red, tot_black, tot_green, tot_even, \
+                tot_odd = self.simulate_roulette(bet_option, iterations)
 
                     # Display results
                     print(f"Bet option\t\t: {bet_option.capitalize()}")
@@ -583,6 +593,11 @@ class MonteCarlo():
                         continue
                     else:
                         return
+            elif choice == '0':
+                return
+            else:
+                print("Invalid choice! Please choose from 1-3.")
+                enter()
             
             
     def simulate_roulette(self, bet_option, iterations):
@@ -618,7 +633,7 @@ class MonteCarlo():
             elif spin_result in green_numbers: 
                 tot_green += 1 
                 
-            if spin_result % 2 == 0 and spin_result != 0: 
+            if spin_result % 2 == 0: 
                 tot_even += 1 
             elif spin_result % 2 == 1: 
                 tot_odd += 1 
@@ -631,7 +646,10 @@ monte = MonteCarlo()
 def markov() : 
     while True:
         clear()
-        print("Markov Chain Calculator")
+        print("Markov Chain Calculator\n")
+        print("Markov Chain is a mathematical model that")
+        print("describes the transitions between states in a system")
+        print("")
         print("1. Markov Chain")
         print("0. Exit")
         choice = input("> ")
