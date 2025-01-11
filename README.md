@@ -45,6 +45,6 @@ Here's how to to contribute:
 5. Push your changes to your forked repository: **`git push origin your-branch-name`** 
 6. Submit a pull request.
 
-## **Contact**
+## :telephone_receiver: **Contact** :telephone_receiver:
 
-If you have any questions or comments about Project Title, please contact **[Me](corneliuslouis3112@gmail.com)**.
+If you have any questions or comments about this project, please contact **[me](corneliuslouis3112@gmail.com)**.
