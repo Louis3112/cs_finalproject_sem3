@@ -16,7 +16,7 @@ The project implements various of computational science concepts, such as :
 10. Markov Chain _______________________________________ *(Rantai Markov)*                                    
 
 The project is developed using Python, runs on CLI, and requires only a minimal set of packages to install.
-For further information, there is a report written in *Bahasa Indonesia* that you can read from
+For further information, there is a report written in *Bahasa Indonesia* that you can read from.
 
 ## :busts_in_silhouette: **Team** :busts_in_silhouette:
 The project was completed by Group 9, which consists of following members :
@@ -43,7 +43,7 @@ Here's how to to contribute:
 3. Make your changes
 4. Commit your changes: **`git commit -m "your messages"`** 
 5. Push your changes to your forked repository: **`git push origin your-branch-name`** 
-6. Submit a pull request.
+6. Submit a pull request
 
 ## :telephone_receiver: **Contact** :telephone_receiver:
 
