@@ -20,6 +20,7 @@ For further information, there is a report written in *Bahasa Indonesia* that yo
 
 ## :busts_in_silhouette: **Team** :busts_in_silhouette:
 The project was completed by Group 9, which consists of following members :
+
 - **Sandhika Lyandra Prasetyo &emsp; &emsp; &emsp; &emsp; &nbsp; &nbsp; - 23051204074**
 - **Rayhan Ramadhani Hendra Atmadja &nbsp; &nbsp; &nbsp; &nbsp;- 23051204075 [@rayhan889](https://github.com/rayhan889)**
 - **Adriano Emmanuel &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - 23051204082 [@pachhy](https://github.com/pachhy)**
