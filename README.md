@@ -42,8 +42,12 @@ Here's how to to contribute:
 2. Create a new branch: **`git checkout -b your-branch-name`**
 3. Make your changes
 4. Commit your changes: **`git commit -m "your messages"`** 
-5. Push your changes to your forked repository: **`git push origin your-branch-name`** 
-6. Submit a pull request
+5. Push your changes to your forked repository: **`git push origin your-branch-name`**
+
+## :telephone_receiver: **Contact** :telephone_receiver:
+
+If you have any questions or comments about this project, please contact **[me](corneliuslouis3112@gmail.com)**.
+7. Submit a pull request
 
 ## :telephone_receiver: **Contact** :telephone_receiver:
 
