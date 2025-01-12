@@ -43,11 +43,7 @@ Here's how to to contribute:
 3. Make your changes
 4. Commit your changes: **`git commit -m "your messages"`** 
 5. Push your changes to your forked repository: **`git push origin your-branch-name`**
-
-## :telephone_receiver: **Contact** :telephone_receiver:
-
-If you have any questions or comments about this project, please contact **[me](corneliuslouis3112@gmail.com)**.
-7. Submit a pull request
+6. Submit a pull request
 
 ## :telephone_receiver: **Contact** :telephone_receiver:
 
